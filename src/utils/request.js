@@ -24,10 +24,10 @@ service.interceptors.request.use(
     // }
 
     // 添加token响应头
-    const token = getToken();
-    if (token) {
-      config.headers["Authorization"] = "Bearer " + token;
-    }
+    // const token = getToken();
+    // if (token) {
+    //   config.headers["Authorization"] = "Bearer " + token;
+    // }
     return config;
   },
   (error) => {
@@ -52,14 +52,16 @@ service.interceptors.response.use(
 
   // 响应拦截器
   (response) => {
-    // 登录成功后在响应头中设置token
-    // 在拦截器中获取token
-    if (response.headers.authentication) {
-      // 将token存储到localStorage，之后向服务器的请求都携带token
-      localStorage.setItem("adminToken", response.headers.authentication);
+    if (response.code === 0) {
+      return response;
+    } else {
+      Message({
+        message: response.message || "Error",
+        type: "error",
+        duration: 5 * 1000,
+      });
+      // return Promise.reject(new Error(res.message || "Error"));
     }
-
-    return response.data;
 
     // if the custom code is not 20000, it is judged as an error.
     // if (res.code !== 20000) {

@@ -134,7 +134,7 @@ export function cancleBid(cusip) {
 export function getBidDetails(cusip) {
   // return request({
   //   url: `/bid/details/${cusip}`,
-  //   method: "delete",
+  //   method: "get",
   // });
   return new Promise((resolve) => {
     resolve({
@@ -165,8 +165,8 @@ export function getBidDetails(cusip) {
 
 export function getUserHistory(username) {
   // return request({
-  //   url: `/bid/details/${cusip}`,
-  //   method: "delete",
+  //   url: '/transaction/history',
+  //   method: "get",
   // });
   return new Promise((resolve) => {
     resolve({

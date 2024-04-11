@@ -67,15 +67,11 @@ export default {
       this.form = {};
     },
     handleSubmit() {
-      addProduct(this.form)
-        .then((resp) => {
-          console.log(resp.data);
-          this.$message.success("add a product successfully");
-          this.form = {};
-        })
-        .catch((err) => {
-          this.$message.error(err);
-        });
+      addProduct(this.form).then((resp) => {
+        console.log(resp.data);
+        this.$message.success("add a product successfully");
+        this.form = {};
+      });
     },
   },
 };

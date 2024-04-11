@@ -1,4 +1,4 @@
-import { removeToken } from "@/utils/auth";
+import { removeUser } from "@/utils/auth";
 import request from "@/utils/request";
 
 export function login(data) {
@@ -23,7 +23,7 @@ export function logout() {
   //   url: "/vue-admin-template/user/logout",
   //   method: "post",
   // });
-  removeToken();
+  removeUser();
 }
 
 // export function getInfo() {
