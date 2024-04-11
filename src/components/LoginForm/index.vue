@@ -165,11 +165,11 @@ export default {
         ],
         password: [
           { required: true, message: "请输入密码", trigger: "blur" },
-          {
-            pattern: /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^\da-zA-Z\s]).{8,}$/,
-            message: "密码需包含大小写字母、数字及特殊字符，且至少为8位",
-            trigger: "blur",
-          },
+          // {
+          //   pattern: /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^\da-zA-Z\s]).{8,}$/,
+          //   message: "密码需包含大小写字母、数字及特殊字符，且至少为8位",
+          //   trigger: "blur",
+          // },
         ],
         checkPass: [
           { required: true, trigger: "blur", validator: validateCheckPass },
