@@ -81,27 +81,18 @@ export const constantRoutes = [
       },
     ],
   },
-
-  // {
-  //   name: "BlogDetail",
-  //   path: "/blog/:id",
-  //   component: getPageComponent(() =>
-  //     import(/* webpackChunkName: "blogdetail" */ "@/views/Blog/Detail")
-  //   ),
-  //   meta: {
-  //     title: "文章详情",
-  //   },
-  // },
-  // {
-  //   path: "external-link",
-  //   component: Layout,
-  //   children: [
-  //     {
-  //       path: "https://panjiachen.github.io/vue-element-admin-site/#/",
-  //       meta: { title: "External Link", icon: "link" },
-  //     },
-  //   ],
-  // },
+  {
+    path: "/image",
+    component: Layout,
+    children: [
+      {
+        path: "index",
+        name: "Image",
+        component: () => import("@/views/image/index"),
+        meta: { title: "image", icon: "el-icon-picture-outline" },
+      },
+    ],
+  },
 
   // 404 page must be placed at the end !!!
   { path: "*", redirect: "/404", hidden: true },

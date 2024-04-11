@@ -1,8 +1,13 @@
 <template>
   <!-- app-container的类样式定义在index.css中 -->
   <div class="app-container">
+    <div class="switch">
+      <a class="all" @click="handleSwitchAllClick">All</a>
+      /
+      <a class="mine" @click="handleSwitchMineClick">Mine</a>
+    </div>
     <el-table
-      :data="historyProducts"
+      :data="curShowProducts"
       border
       style="width: 100%"
       v-loading="loading"
@@ -19,42 +24,42 @@
           }}</a>
         </template>
       </el-table-column>
-      <el-table-column label="productName" align="center"
+      <el-table-column label="Product Name" align="center"
         ><template slot-scope="scope">
           <p>{{ scope.row.productName }}</p>
         </template>
       </el-table-column>
-      <el-table-column label="productDescription" align="center">
+      <el-table-column label="Product Description" align="center">
         <template slot-scope="scope">
           <p>{{ scope.row.productDescription }}</p>
         </template>
       </el-table-column>
-      <el-table-column label="position" align="center">
+      <el-table-column label="Position" align="center">
         <template slot-scope="scope"
           ><p>{{ scope.row.position }}</p></template
         >
       </el-table-column>
-      <el-table-column label="startingValue" align="center">
+      <el-table-column label="Start Value" align="center">
         <template slot-scope="scope"
           ><p>{{ scope.row.startingValue }}</p></template
         >
       </el-table-column>
-      <el-table-column label="bidValue" align="center">
+      <el-table-column label="Bid Value" align="center">
         <template slot-scope="scope"
           ><p>{{ scope.row.bidValue }}</p></template
         >
       </el-table-column>
-      <el-table-column label="minimumBidIncrement" align="center">
+      <el-table-column label="Minimum Bid Increment" align="center">
         <template slot-scope="scope"
           ><p>{{ scope.row.minimumBidIncrement }}</p></template
         >
       </el-table-column>
-      <el-table-column label="auctionDeadline" align="center">
+      <el-table-column label="Deadline" align="center">
         <template slot-scope="scope"
           ><p>{{ scope.row.auctionDeadline }}</p></template
         >
       </el-table-column>
-      <el-table-column label="ranking" align="center">
+      <el-table-column label="Ranking" align="center">
         <template slot-scope="scope"
           ><p>{{ scope.row.ranking }}</p></template
         >
@@ -90,49 +95,52 @@
       top="5vh"
     >
       <el-form :model="form" label-position="left">
-        <el-form-item label="cusip" :label-width="formLabelWidth">
+        <el-form-item label="CUSIP" :label-width="formLabelWidth">
           <el-input
             v-model="form.cusip"
             autocomplete="off"
             :disabled="true"
           ></el-input>
         </el-form-item>
-        <el-form-item label="productName" :label-width="formLabelWidth">
+        <el-form-item label="Product Name" :label-width="formLabelWidth">
           <el-input
             v-model="form.productName"
             autocomplete="off"
             :disabled="true"
           ></el-input>
         </el-form-item>
-        <el-form-item label="productDescription" :label-width="formLabelWidth">
+        <el-form-item label="Product Description" :label-width="formLabelWidth">
           <el-input
             v-model="form.productDescription"
             autocomplete="off"
             :disabled="true"
           ></el-input>
         </el-form-item>
-        <el-form-item label="startingValue" :label-width="formLabelWidth">
+        <el-form-item label="Start Value" :label-width="formLabelWidth">
           <el-input
             v-model="form.startingValue"
             autocomplete="off"
             :disabled="true"
           ></el-input>
         </el-form-item>
-        <el-form-item label="minimumBidIncrement" :label-width="formLabelWidth">
+        <el-form-item
+          label="Minimum Bid Increment"
+          :label-width="formLabelWidth"
+        >
           <el-input
             v-model="form.minimumBidIncrement"
             autocomplete="off"
             :disabled="true"
           ></el-input>
         </el-form-item>
-        <el-form-item label="auctionDeadline" :label-width="formLabelWidth">
+        <el-form-item label="Deadline" :label-width="formLabelWidth">
           <el-input
             v-model="form.auctionDeadline"
             autocomplete="off"
             :disabled="true"
           ></el-input
         ></el-form-item>
-        <el-form-item label="bidAmount" :label-width="formLabelWidth">
+        <el-form-item label="Bid Amount" :label-width="formLabelWidth">
           <el-input v-model="form.bidAmount" autocomplete="off"></el-input
         ></el-form-item>
       </el-form>
@@ -202,10 +210,13 @@ export default {
       form: {}, // form中的description为字符串
       formTitle: "BID",
       tableTitle: "",
-      formLabelWidth: "170px",
+      formLabelWidth: "180px",
 
       isBiding: false,
       isEditing: false,
+
+      isShowAll: true,
+      isShowMine: false,
 
       loading: false,
 
@@ -222,6 +233,16 @@ export default {
   //     console.log(3, this.historyProducts);
   //   });
   // },
+  computed: {
+    curShowProducts() {
+      if (this.isShowAll) return this.historyProducts;
+      else if (this.isShowMine) {
+        return this.historyProducts.filter((item) => {
+          if (item.isInHistory) return true;
+        });
+      }
+    },
+  },
   methods: {
     fetchData() {
       this.loading = true;
@@ -331,6 +352,14 @@ export default {
     addProduct() {
       this.$router.push({ name: "AddProduct" });
     },
+    handleSwitchAllClick() {
+      this.isShowAll = true;
+      this.isShowMine = false;
+    },
+    handleSwitchMineClick() {
+      this.isShowMine = true;
+      this.isShowAll = false;
+    },
   },
 };
 </script>
@@ -358,5 +387,9 @@ a {
 
 a:hover {
   color: rgb(88, 129, 201);
+}
+
+.switch {
+  margin-bottom: 1.5em;
 }
 </style>

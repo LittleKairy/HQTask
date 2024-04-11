@@ -1,28 +1,28 @@
 <template>
   <div class="app-container">
     <el-form :model="form" label-position="left">
-      <el-form-item label="cusip" :label-width="formLabelWidth">
+      <el-form-item label="CUSIP" :label-width="formLabelWidth">
         <el-input v-model="form.cusip" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="productName" :label-width="formLabelWidth">
+      <el-form-item label="Produc tName" :label-width="formLabelWidth">
         <el-input v-model="form.productName" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="productDescription" :label-width="formLabelWidth">
+      <el-form-item label="Product Description" :label-width="formLabelWidth">
         <el-input
           v-model="form.productDescription"
           autocomplete="off"
         ></el-input>
       </el-form-item>
-      <el-form-item label="startingValue" :label-width="formLabelWidth">
+      <el-form-item label="Start Value" :label-width="formLabelWidth">
         <el-input v-model="form.startingValue" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="minimumBidIncrement" :label-width="formLabelWidth">
+      <el-form-item label="Minimum Bid Increment" :label-width="formLabelWidth">
         <el-input
           v-model="form.minimumBidIncrement"
           autocomplete="off"
         ></el-input>
       </el-form-item>
-      <el-form-item label="auctionDeadline" :label-width="formLabelWidth">
+      <el-form-item label="Deadline" :label-width="formLabelWidth">
         <el-input v-model="form.auctionDeadline" autocomplete="off"></el-input
       ></el-form-item>
       <el-form-item class="btns"
@@ -59,7 +59,7 @@ export default {
       dialogFormVisible: false,
       form: {}, // form中的description为字符串
       formTitle: "ADD PRODUCT",
-      formLabelWidth: "170px",
+      formLabelWidth: "180px",
     };
   },
   methods: {
