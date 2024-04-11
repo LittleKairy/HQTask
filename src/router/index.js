@@ -58,22 +58,30 @@ export const constantRoutes = [
         path: "dashboard",
         name: "Dashboard",
         component: () => import("@/views/dashboard/index"),
-        meta: { title: "dashboard", icon: "dashboard" },
+        meta: { title: "dashboard", icon: "el-icon-s-help" },
       },
     ],
   },
   {
     path: "/product",
     component: Layout,
+    meta: { title: "product", icon: "el-icon-notebook-1" },
     children: [
       {
         path: "index",
         name: "Product",
         component: () => import("@/views/product/index"),
-        meta: { title: "products", icon: "el-icon-notebook-1" },
+        meta: { title: "bid", icon: "el-icon-s-order" },
+      },
+      {
+        path: "add",
+        name: "AddProduct",
+        component: () => import("@/views/addProduct/index"),
+        meta: { title: "add product", icon: "el-icon-circle-plus-outline" },
       },
     ],
   },
+
   // {
   //   name: "BlogDetail",
   //   path: "/blog/:id",

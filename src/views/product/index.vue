@@ -73,14 +73,14 @@
     </el-table>
 
     <!-- 添加 -->
-    <!-- <div class="add">
+    <div class="add">
       <el-button
         type="primary"
         icon="el-icon-plus"
         circle
-        @click="dialogFormVisible = true"
+        @click="addProduct"
       ></el-button>
-    </div> -->
+    </div>
 
     <!-- 表单对话框-->
     <el-dialog
@@ -187,8 +187,7 @@ import {
   updateBid,
   cancleBid,
 } from "@/api/product";
-import { getToken } from "@/utils/auth";
-import { Message } from "element-ui";
+import { getUsername } from "@/utils/auth";
 export default {
   components: { DeleteBtn },
   data() {
@@ -196,7 +195,6 @@ export default {
       products: [], // projects中的description为数组
       history: [], // 当前用户bid过的
       historyProducts: [], // 在products基础上添加了是否被当前用户bid过
-      orders: [1, 2, 3, 4, 5],
 
       // 表单相关
       dialogTableVisible: false,
@@ -211,7 +209,7 @@ export default {
 
       loading: false,
 
-      gridData: [],
+      gridData: [], // 表格中数据
     };
   },
   created() {
@@ -228,7 +226,7 @@ export default {
     fetchData() {
       this.loading = true;
       // 获取当前用户的投资记录
-      const username = getToken("username");
+      const username = getUsername();
       getUserHistory(username)
         .then((resp) => {
           resp.data.forEach((item) => {
@@ -275,7 +273,7 @@ export default {
     },
     handleEditConfirm() {
       console.log(this.form);
-      const username = getToken("username");
+      const username = getUsername();
       if (this.isBiding) {
         // 提交bid
         const data = {
@@ -308,7 +306,7 @@ export default {
       this.isEditing = false;
     },
     handleDelete(product) {
-      const username = getToken("username");
+      const username = getUsername();
       const data = {
         cusip: product.cusip,
         username,
@@ -329,6 +327,9 @@ export default {
         this.gridData = resp.data.userBidsList;
         this.loading = false;
       });
+    },
+    addProduct() {
+      this.$router.push({ name: "AddProduct" });
     },
   },
 };

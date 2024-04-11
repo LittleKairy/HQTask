@@ -134,6 +134,10 @@ export default {
           font-size: 12px;
         }
       }
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

@@ -45,23 +45,24 @@ export function getProducts() {
     });
   });
 }
-export function getDefaultProduct(cusip) {
-  // return request({
-  //   url: `/product/default-data/${cusip}`,
-  //   method: "get",
-  // });
-  return {
-    code: 0,
-    msg: "Success",
-    data: {
-      productName: "Default Product Name",
-      productDescription: "Default Product Description",
-      startingValue: 100.0,
-      minimumBidIncrement: 10.0,
-      auctionDeadline: "2024-04-10T12:00:00Z",
-    },
-  };
-}
+
+// export function getDefaultProduct(cusip) {
+//   // return request({
+//   //   url: `/product/default-data/${cusip}`,
+//   //   method: "get",
+//   // });
+//   return {
+//     code: 0,
+//     msg: "Success",
+//     data: {
+//       productName: "Default Product Name",
+//       productDescription: "Default Product Description",
+//       startingValue: 100.0,
+//       minimumBidIncrement: 10.0,
+//       auctionDeadline: "2024-04-10T12:00:00Z",
+//     },
+//   };
+// }
 
 // 传入cusip获取对应表单数据 ？？？ 暂时不用
 // export function getProduct(cusip) {
@@ -182,6 +183,27 @@ export function getUserHistory(username) {
           amount: 1000,
         },
       ],
+    });
+  });
+}
+
+export function addProduct(data) {
+  // return request({
+  //   url: '/product/add',
+  //   method: "post",
+  //   data
+  // });
+  return new Promise((resolve) => {
+    resolve({
+      code: 0,
+      msg: "Success",
+      data: {
+        productName: "Default Product Name",
+        productDescription: "Default Product Description",
+        startingValue: 100.0,
+        minimumBidIncrement: 10.0,
+        auctionDeadline: "2024-04-10T12:00:00Z",
+      },
     });
   });
 }

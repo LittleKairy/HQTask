@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-container">
     <!-- <div class="dashboard-text">name: {{ name }}</div> -->
-    <div class="dashboard-text">欢迎使用金融债券交易系统</div>
+    <div class="dashboard-text">Welcome</div>
   </div>
 </template>
 
