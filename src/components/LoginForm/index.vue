@@ -243,7 +243,7 @@ export default {
           // 表单验证通过
           (async () => {
             this.loading = true;
-            await this.$listeners.submit(this.loginForm);
+            this.$listeners.submit(this.loginForm);
             this.$router.push({ path: this.redirect || "/" });
             this.loading = false;
           })();

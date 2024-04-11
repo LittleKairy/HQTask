@@ -52,15 +52,18 @@ service.interceptors.response.use(
 
   // 响应拦截器
   (response) => {
-    if (response.code === 0) {
-      return response;
+    const res = response.data;
+    if (res.code === 0) {
+      console.log("response", res);
+      return res;
     } else {
+      // console.log("err1aaa", res);
       Message({
-        message: response.message || "Error",
+        message: res.msg || "Error",
         type: "error",
         duration: 5 * 1000,
       });
-      // return Promise.reject(new Error(res.message || "Error"));
+      return Promise.reject(new Error(res.msg || "Error"));
     }
 
     // if the custom code is not 20000, it is judged as an error.

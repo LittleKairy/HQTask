@@ -7,32 +7,32 @@
 <script>
 import LoginForm from "@/components/LoginForm";
 import { setUsername } from "@/utils/auth";
+import {login} from "@/api/user";
 export default {
   components: {
     LoginForm,
   },
   methods: {
-    async handleSubmit(form) {
+    handleSubmit(form) {
       const loginForm = {
         username: form.username,
         password: form.password,
       };
       console.log(loginForm);
-      // try {
-      //   const data = await this.$store.dispatch("user/login", loginForm);
-      //   console.log(data);
-      //   this.$message.success(`欢迎${loginForm.username}`);
-      //   this.$router.push({ path: this.redirect || "/" });
-      // } catch (err) {
-      //   console.log(err);
-      //   this.$message.error("账号或密码错误");
-      //   this.$router.push({
-      //     name: "Login",
-      //     query: { redirect: this.redirect },
-      //   });
-      // }
-      this.$router.push({ path: this.redirect || "/" });
-      setUsername(loginForm.username);
+     
+        login(loginForm).then(resp=>{
+          console.log(resp);
+          setUsername(loginForm.username);
+          this.$message.success(`欢迎${loginForm.username}`);
+          this.$router.push({ path: this.redirect || "/" });
+        }).catch(err=>{
+          // console.log("err11",err);
+          // this.$message.error(err);
+          this.$router.push({name:"Login" || "/" });
+      });
+     
+      // this.$router.push({ path: this.redirect || "/" });
+      // setUsername(loginForm.username);
     },
   },
 };

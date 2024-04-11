@@ -1,13 +1,12 @@
 <template>
   <div class="app-container">
     <div class="images">
-      <el-image :src="url" :preview-src-list="srcList" :fit="fill"> </el-image>
+      <el-image :src="url" :preview-src-list="srcList" fit="fill"> </el-image>
     </div>
   </div>
 </template>
 
 <script>
-import { getImages } from "@/api/images";
 import image1 from "@/assets/images/1.png";
 import image2 from "@/assets/images/2.png";
 import image3 from "@/assets/images/3.png";
@@ -24,23 +23,12 @@ export default {
       // ],
     };
   },
-  created() {
-    this.fetchData();
-  },
   computed: {
     srcList() {
       return [image1, image2, image3, image4, image5, image6];
     },
     url() {
       return image5;
-    },
-  },
-  methods: {
-    fetchData() {
-      getImages().then((resp) => {
-        this.srcList = resp.data;
-        this.url = resp.data[0];
-      });
     },
   },
 };

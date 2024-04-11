@@ -47,8 +47,8 @@ module.exports = {
       // "/api": {
       //   target: "http://localhost:7001",
       // },
-      "/product": {
-        target: "http://localhost:xxxx",
+      "/user": {
+        target: "http://localhost:7777",
       },
     },
   },
