@@ -268,7 +268,9 @@ export default {
                 hpro.push({ ...item, isInHistory: true });
               else hpro.push({ ...item, isInHistory: false });
             });
+            console.log(hpro);
             this.historyProducts = hpro;
+            console.log(this.historyProducts);
             this.loading = false;
             return Promise.resolve();
           });

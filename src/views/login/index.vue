@@ -23,7 +23,7 @@ export default {
         login(loginForm).then(resp=>{
           console.log(resp);
           setUsername(loginForm.username);
-          this.$message.success(`欢迎${loginForm.username}`);
+          this.$message.success(`Welcome Dear ${loginForm.username}`);
           this.$router.push({ path: this.redirect || "/" });
         }).catch(err=>{
           // console.log("err11",err);

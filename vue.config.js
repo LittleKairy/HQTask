@@ -50,6 +50,15 @@ module.exports = {
       "/user": {
         target: "http://localhost:7777",
       },
+      "/product": {
+        target: "http://localhost:7777",
+      },
+      "/bid": {
+        target: "http://localhost:7777",
+      },
+      "/transaction": {
+        target: "http://localhost:7777",
+      },
     },
   },
   configureWebpack: {

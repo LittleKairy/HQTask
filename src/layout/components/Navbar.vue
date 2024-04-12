@@ -21,7 +21,7 @@
             <el-dropdown-item> 个人中心 </el-dropdown-item>
           </router-link> -->
           <el-dropdown-item divided @click.native="logout">
-            <span style="display: block">退出登录</span>
+            <span style="display: block">logout</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -51,10 +51,17 @@ export default {
       this.$store.dispatch("app/toggleSideBar");
     },
     logout() {
-      // await this.$store.dispatch("user/logout");
+      console.log("logout");
+      this.$store.dispatch("user/logout")
+        .then(() => {
+          console.log('Logout action executed successfully');
+          removeUser();
+          this.$router.push({ name: "Login" });
+        })
+        .catch((err) => {
+          console.error('Error executing logout action:', err);
+        });
       // this.$router.push(`/login?redirect=${this.$route.fullPath}`);
-      removeUser();
-      this.$router.push({ name: "Login" });
     },
   },
 };

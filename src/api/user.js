@@ -1,7 +1,8 @@
-import { removeUser } from "@/utils/auth";
+import { getUsername, removeUser } from "@/utils/auth";
 import request from "@/utils/request";
 
 export function login(data) {
+  // console.log("login POST");
   return request({
     url: "/user/login",
     method: "post",
@@ -17,13 +18,20 @@ export function register(data) {
   });
 }
 
-// 这里登出时目前不记录在服务器，只是删除本地token
-export function logout() {
-  // return request({
-  //   url: "/vue-admin-template/user/logout",
-  //   method: "post",
-  // });
+export function logoutResp() {
+  console.log("logout POST");
+  const username = getUsername();
+  console.log("const username:"+username);
   removeUser();
+  console.log("const username after remove:"+username);
+  return request({
+    url: "/user/logout",
+    method: "post",
+    data: {
+      username : username,
+    },
+  });
+  // return Promise;
 }
 
 // export function getInfo() {

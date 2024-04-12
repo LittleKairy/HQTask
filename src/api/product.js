@@ -9,41 +9,63 @@ import request from "@/utils/request";
 // "minimumBidIncrement": 10,
 // "auctionDeadline": "2024-04-30 12:00:00",
 // "ranking": "3/5"
-export function getProducts() {
-  // return request({
-  //   url: "/product/list",
-  //   method: "get",
-  // });
-  return new Promise((resolve) => {
-    resolve({
-      code: 0,
-      msg: "Success",
-      data: [
-        {
-          cusip: "CUSIP",
-          productName: "Product Name",
-          productDescription: "Product Description",
-          position: 100,
-          startingValue: 1000,
-          bidValue: 1200,
-          minimumBidIncrement: 10,
-          auctionDeadline: "2024-04-30 12:00:00",
-          ranking: "3/5",
-        },
-        {
-          cusip: "CUSIPaaa",
-          productName: "Product Name",
-          productDescription: "Product Description",
-          position: 100,
-          startingValue: 1000,
-          bidValue: 1200,
-          minimumBidIncrement: 10,
-          auctionDeadline: "2024-04-30 12:00:00",
-          ranking: "3/5",
-        },
-      ],
-    });
+export function getProducts(data) {
+  return request({
+    url: "/product/list",
+    method: "get",
+    data,
   });
+  // return new Promise((resolve) => {
+  //   resolve({
+  //     code: 0,
+  //     msg: "Success",
+  //     data: [
+  //       {
+  //         cusip: "CUSIP",
+  //         productName: "Product Name",
+  //         productDescription: "Product Description",
+  //         position: 100,
+  //         startingValue: 1000,
+  //         bidValue: 1200,
+  //         minimumBidIncrement: 10,
+  //         auctionDeadline: "2024-04-30 12:00:00",
+  //         ranking: "3/5",
+  //       },
+  //       {
+  //         cusip: "CUSIPaaa",
+  //         productName: "Product Name",
+  //         productDescription: "Product Description",
+  //         position: 100,
+  //         startingValue: 1000,
+  //         bidValue: 1200,
+  //         minimumBidIncrement: 10,
+  //         auctionDeadline: "2024-04-30 12:00:00",
+  //         ranking: "3/5",
+  //       },
+  //     ],
+  //   });
+  // });
+}
+
+export function addProduct(data) {
+  return request({
+    url: '/product/add',
+    method: "post",
+    data,
+  });
+  // return new Promise((resolve) => {
+  //   resolve({
+  //     code: 0,
+  //     msg: "Success",
+  //     data: {
+  //       productName: "Default Product Name",
+  //       productDescription: "Default Product Description",
+  //       startingValue: 100.0,
+  //       minimumBidIncrement: 10.0,
+  //       auctionDeadline: "2024-04-10T12:00:00Z",
+  //     },
+  //   });
+  // });
 }
 
 // export function getDefaultProduct(cusip) {
@@ -76,8 +98,7 @@ export function getProducts() {
 //     data: {
 //       cusip: "CUSIP",
 //       productName: "Default Product Name",
-//       productDescription: "Default Product Description",
-//       startingValue: 100.0,
+//       productDescription: "Default Product Description",//       startingValue: 100.0,
 //       minimumBidIncrement: 10.0,
 //       auctionDeadline: "2024-04-10T12:00:00Z",
 //     },
@@ -187,23 +208,4 @@ export function getUserHistory(username) {
   });
 }
 
-export function addProduct(data) {
-  // return request({
-  //   url: '/product/add',
-  //   method: "post",
-  //   data
-  // });
-  return new Promise((resolve) => {
-    resolve({
-      code: 0,
-      msg: "Success",
-      data: {
-        productName: "Default Product Name",
-        productDescription: "Default Product Description",
-        startingValue: 100.0,
-        minimumBidIncrement: 10.0,
-        auctionDeadline: "2024-04-10T12:00:00Z",
-      },
-    });
-  });
-}
+

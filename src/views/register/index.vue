@@ -21,7 +21,7 @@ export default {
      
      register(loginForm).then(resp=>{
        console.log(resp);
-       this.$message.success("注册成功，请返回登录页面进行登录");
+       this.$message.success("Register Successfully! Please Login!");
        this.$router.push({ name:"Login" || "/" });
      }).catch(err=>{
       console.log(err);

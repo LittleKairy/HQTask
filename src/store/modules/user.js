@@ -1,4 +1,4 @@
-import { login, logout, getInfo } from "@/api/user";
+import { login, logoutResp, getInfo } from "@/api/user";
 import { getToken, setToken, removeToken } from "@/utils/auth";
 import { resetRouter } from "@/router";
 
@@ -34,14 +34,13 @@ const mutations = {
 const actions = {
   // user login
   login({ commit }, userInfo) {
-    // const { username, password } = userInfo
     const postData = {
       loginId: userInfo.username.trim(),
       loginPwd: userInfo.password,
       captcha: userInfo.captcha,
       remeber: userInfo.checked ? 7 : 0,
     };
-    console.log(postData);
+    // console.log(postData);
     return new Promise((resolve, reject) => {
       login(postData)
         .then((response) => {
@@ -82,12 +81,6 @@ const actions = {
             if (!data) {
               return reject("Verification failed, please Login again.");
             }
-
-            // const { name, avatar } = data;
-
-            // commit("SET_NAME", name);
-            // commit("SET_AVATAR", avatar);
-
             commit("SET_USER", data);
             resolve(data);
           }
@@ -100,22 +93,21 @@ const actions = {
 
   // user logout
   logout({ commit, state }) {
-    removeToken(); // must remove  token  first
-    resetRouter();
-    commit("RESET_STATE");
-
-    // return new Promise((resolve, reject) => {
-    //   logout()
-    //     .then(() => {
-    //       removeToken(); // must remove  token  first
-    //       resetRouter();
-    //       commit("RESET_STATE");
-    //       resolve();
-    //     })
-    //     .catch((error) => {
-    //       reject(error);
-    //     });
-    // });
+    console.log("logout in user.js");
+    return new Promise((resolve, reject) => {
+      logoutResp()
+        .then(() => {
+          removeToken(); // must remove  token  first
+          resetRouter();
+          commit("RESET_STATE");
+          resolve();
+          console.log("logout success");
+        })
+        .catch((error) => {
+          reject(error);
+          console.log("logout error");
+        });
+    });
   },
 
   // remove token
