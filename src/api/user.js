@@ -19,11 +19,8 @@ export function register(data) {
 }
 
 export function logoutResp() {
-  console.log("logout POST");
   const username = getUsername();
-  console.log("const username:"+username);
   removeUser();
-  console.log("const username after remove:"+username);
   return request({
     url: "/user/logout",
     method: "post",

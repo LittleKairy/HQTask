@@ -299,10 +299,13 @@ input[type="password"]::-ms-reveal {
   }
 
   .el-form-item {
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 2px outset rgba(255, 255, 255, 0.1);
     background: rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+    border-radius: 10px;
     color: #454545;
+  }
+  .el-form-item:hover {
+    box-shadow: 0 0 6px rgba(0,0,0,0.5);
   }
 }
 </style>
@@ -389,5 +392,26 @@ $light_gray: #eee;
 .forgetPwd {
   float: left;
   color: #409eff;
+}
+
+.el-button{
+  background: linear-gradient(90deg, rgb(70, 70, 218), blue);
+}
+.el-button:hover {
+  //background-color: #0e87ea;
+  //border-color: #09a8be;
+  //transition: background-color 0.3s ease, border-color 0.5s ease;
+  background: linear-gradient(90deg, red, blue);
+  background-size: 200% 100%;
+  animation: Gradient 2s ease ;
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }
 </style>

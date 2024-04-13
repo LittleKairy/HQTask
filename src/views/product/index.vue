@@ -44,12 +44,12 @@
           ><p>{{ scope.row.startingValue }}</p></template
         >
       </el-table-column>
-      <el-table-column label="Bid Value" align="center">
+      <el-table-column label="Current Highest Bid Value" align="center" show-overflow-tooltip>
         <template slot-scope="scope"
           ><p>{{ scope.row.bidValue }}</p></template
         >
       </el-table-column>
-      <el-table-column label="Minimum Bid Increment" align="center">
+      <el-table-column label="Bonds Minimum Bid Increment" align="center" show-overflow-tooltip>
         <template slot-scope="scope"
           ><p>{{ scope.row.minimumBidIncrement }}</p></template
         >
@@ -59,7 +59,7 @@
           ><p>{{ scope.row.auctionDeadline }}</p></template
         >
       </el-table-column>
-      <el-table-column label="Ranking" align="center">
+      <el-table-column label="Your Ranking" align="center">
         <template slot-scope="scope"
           ><p>{{ scope.row.ranking }}</p></template
         >
@@ -70,7 +70,7 @@
             <el-button plain @click="handleBid(scope.row)">Bid</el-button>
           </template>
           <template v-else>
-            <el-button plain @click="handleEdit(scope.row)">Eidt</el-button>
+            <el-button plain @click="handleEdit(scope.row)">Edit</el-button>
             <delete-btn @deleteBtnClick="handleDelete(scope.row)" />
           </template>
         </template>
@@ -176,8 +176,8 @@
       <el-table :data="gridData">
         <el-table-column property="username" label="username"></el-table-column>
         <el-table-column
-          property="bidAmount"
-          label="bidAmount"
+          property="bidvalue"
+          label="bid amount"
         ></el-table-column>
         <el-table-column property="ranking" label="ranking"></el-table-column>
       </el-table>
@@ -253,7 +253,7 @@ export default {
           resp.data.forEach((item) => {
             this.history.push(item.cusip);
           });
-          // console.log(this.history);
+          console.log(this.history);
           return Promise.resolve();
         })
         .then(() => {
@@ -292,9 +292,10 @@ export default {
       this.dialogFormVisible = true;
       console.log(product);
       this.form = product;
-      this.isEditing = false;
+      this.isEditing = true;
     },
     handleEditConfirm() {
+      //这里应该写一个向后端访问当前自己的竞价的请求函数
       console.log(this.form);
       const username = getUsername();
       if (this.isBiding) {
