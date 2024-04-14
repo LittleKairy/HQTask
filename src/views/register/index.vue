@@ -16,6 +16,8 @@ export default {
       const loginForm = {
         username: form.username.trim(),
         password: form.password.trim(),
+        email: form.email.trim(),
+        phoneNumber: form.phoneNumber.trim(),
       };
       console.log(loginForm);
      

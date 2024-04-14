@@ -31,19 +31,20 @@ export function logoutResp() {
   // return Promise;
 }
 
-// export function getInfo() {
-//   // return request({
-//   //   url: "/vue-admin-template/user/info",
-//   //   method: "get",
-//   //   params: { token },
-//   // });
-//   const resp = request({
-//     url: "/api/admin/whoami",
-//     method: "get",
-//   });
-//   // console.log("getInfo>>>>", resp);
-//   return resp;
+export function getUserProfile() {
+  const username = getUsername();
+  console.log("get user profile");
+  return request({
+    url: `/user/profile/${username}`,
+    method: "get",
+  });
+  // const resp = request({
+  //   url: "/api/admin/whoami",
+  //   method: "get",
+  // });
+  // // console.log("getInfo>>>>", resp);
+  // return resp;
 
-//   // 没有响应或者登录过期，返回字符串
-//   // 成功登录，返回对象
-// }
+  // 没有响应或者登录过期，返回字符串
+  // 成功登录，返回对象
+}

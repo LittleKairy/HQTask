@@ -76,6 +76,40 @@
         </el-form-item>
       </template>
 
+      <template v-if="!isLogin">
+        <el-form-item prop="email">
+          <span class="svg-container">
+            <!-- 这里的使用的图标在icons/svg目录下 -->
+            <svg-icon icon-class="example" />
+          </span>
+          <el-input
+            ref="email"
+            v-model="loginForm.email"
+            placeholder="请输入邮箱"
+            name="email"
+            type="text"
+            tabindex="4"
+            auto-complete="on"
+          />
+        </el-form-item>
+
+        <el-form-item prop="phoneNumber">
+          <span class="svg-container">
+            <!-- 这里的使用的图标在icons/svg目录下 -->
+            <svg-icon icon-class="example" />
+          </span>
+          <el-input
+            ref="phoneNumber"
+            v-model="loginForm.phoneNumber"
+            placeholder="请输入手机号"
+            name="phoneNumber"
+            type="text"
+            tabindex="4"
+            auto-complete="on"
+          />
+        </el-form-item>
+      </template>
+
       <el-button
         :loading="loading"
         type="primary"
@@ -403,7 +437,7 @@ $light_gray: #eee;
   //transition: background-color 0.3s ease, border-color 0.5s ease;
   background: linear-gradient(90deg, red, blue);
   background-size: 200% 100%;
-  animation: Gradient 2s ease ;
+  animation: Gradient 2s ease-in ;
 }
 
 @keyframes Gradient {

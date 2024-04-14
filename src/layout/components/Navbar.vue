@@ -17,11 +17,11 @@
           <router-link to="/">
             <el-dropdown-item> Home </el-dropdown-item>
           </router-link>
-          <!-- <router-link to="/personalSetting">
-            <el-dropdown-item> 个人中心 </el-dropdown-item>
-          </router-link> -->
+          <router-link to="/profile/index">
+            <el-dropdown-item divided> Profile </el-dropdown-item>
+          </router-link>
           <el-dropdown-item divided @click.native="logout">
-            <span style="display: block">logout</span>
+            <span style="display: block">Logout</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>

@@ -75,9 +75,22 @@ export const constantRoutes = [
       },
       {
         path: "add",
-        name: "AddProduct",
+        name: "Add Product",
         component: () => import("@/views/addProduct/index"),
         meta: { title: "add product", icon: "el-icon-circle-plus-outline" },
+      },
+    ],
+  },
+  {
+    path: "/profile",
+    component: Layout,
+    meta: { title: "profile", icon: "el-icon-user" },
+    children: [
+      {
+        path: "index",
+        name: "Profile",
+        component: () => import("@/views/profile/index"),
+        meta: { title: "profile", icon: "el-icon-user" },
       },
     ],
   },

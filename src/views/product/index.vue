@@ -67,12 +67,12 @@
       <el-table-column label="Action" width="180px" align="center">
         <template slot-scope="scope">
           <template v-if="!scope.row.isInHistory">
-            <el-button plain @click="handleBid(scope.row)">Bid</el-button>
-          </template>
-          <template v-else>
-            <el-button plain @click="handleEdit(scope.row)">Edit</el-button>
-            <delete-btn @deleteBtnClick="handleDelete(scope.row)" />
-          </template>
+              <el-button :class="'button1'"plain @click="handleBid(scope.row)">Bid</el-button>
+        </template>
+        <template v-else>
+          <el-button :class="'button2'" plain @click="handleEdit(scope.row)">Edit</el-button>
+          <delete-btn @deleteBtnClick="handleDelete(scope.row)" />
+        </template>
         </template>
       </el-table-column>
     </el-table>
@@ -353,7 +353,7 @@ export default {
       });
     },
     addProduct() {
-      this.$router.push({ name: "AddProduct" });
+      this.$router.push({ name: "Add Product" });
     },
     handleSwitchAllClick() {
       this.isShowAll = true;
@@ -394,5 +394,20 @@ a:hover {
 
 .switch {
   margin-bottom: 1.5em;
+}
+
+.button1 {
+  background-color: #23c518;
+  color: white;
+  width: 45%;
+}
+
+.button2 {
+  background-color: #efdb2f;
+  color: white;
+  width: 45%;
+  margin: 1px;
+  padding-right: 8%;
+  padding-left: 8%;
 }
 </style>

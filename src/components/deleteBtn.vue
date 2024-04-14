@@ -15,7 +15,7 @@
         >yes</el-button
       >
     </div>
-    <el-button plain slot="reference">Cancle</el-button>
+    <el-button :class="'del'" plain slot="reference">Cancel</el-button>
   </el-popover>
 </template>
 
@@ -33,3 +33,15 @@ export default {
   },
 };
 </script>
+<style>
+
+.del{
+  background-color: #e85454;
+  color: white;
+  width:45%;
+  padding-right: 10%;
+  padding-left: 8%;
+}
+
+</style>
+
