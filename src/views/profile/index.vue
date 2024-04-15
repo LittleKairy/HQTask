@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { getUserProfile } from "@/api/user"; // 假设你有一个getUserProfile函数来获取用户信息
+import { getUserProfile } from "@/api/user";
 
 export default {
   data() {

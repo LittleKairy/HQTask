@@ -69,7 +69,7 @@
           <template v-if="!scope.row.isInHistory">
               <el-button :class="'button1'"plain @click="handleBid(scope.row)">Bid</el-button>
         </template>
-        <template v-else>
+        <template v-else-if="scope.row.isInHistory">
           <el-button :class="'button2'" plain @click="handleEdit(scope.row)">Edit</el-button>
           <delete-btn @deleteBtnClick="handleDelete(scope.row)" />
         </template>

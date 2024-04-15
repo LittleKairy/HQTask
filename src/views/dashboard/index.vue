@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-container">
     <!-- <div class="dashboard-text">name: {{ name }}</div> -->
-    <div class="dashboard-text">Welcome</div>
+    <div class="dashboard-text">Welcome to XiHong Online Bond Transaction Plantform!</div>
   </div>
 </template>
 
@@ -25,5 +25,11 @@ export default {
     font-size: 30px;
     line-height: 46px;
   }
+}
+</style>
+
+<style scoped>
+.dashboard-text {
+  text-align: center;
 }
 </style>

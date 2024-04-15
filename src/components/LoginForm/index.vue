@@ -20,7 +20,7 @@
         <el-input
           ref="username"
           v-model="loginForm.username"
-          placeholder="请输入用户名"
+          placeholder="please input username"
           name="username"
           type="text"
           tabindex="1"
@@ -39,7 +39,7 @@
           ref="password"
           v-model="loginForm.password"
           :type="passwordType"
-          :placeholder="isResetPwd ? '请输入旧密码' : '请输入密码'"
+          :placeholder="isResetPwd ? '请输入旧密码' : 'please input password'"
           name="password"
           tabindex="2"
           :auto-complete="passAutoComplete"
@@ -63,7 +63,7 @@
             ref="checkPass"
             v-model="loginForm.checkPass"
             :type="checkPassType"
-            :placeholder="isResetPwd ? '请输入新密码' : '请确认密码'"
+            :placeholder="isResetPwd ? '请输入新密码' : 'please confim password'"
             name="checkPass"
             tabindex="3"
             @keyup.enter.native="handleLogin"
@@ -85,7 +85,7 @@
           <el-input
             ref="email"
             v-model="loginForm.email"
-            placeholder="请输入邮箱"
+            placeholder="please input email"
             name="email"
             type="text"
             tabindex="4"
@@ -101,7 +101,7 @@
           <el-input
             ref="phoneNumber"
             v-model="loginForm.phoneNumber"
-            placeholder="请输入手机号"
+            placeholder="please input phone number"
             name="phoneNumber"
             type="text"
             tabindex="4"
@@ -122,12 +122,12 @@
         ><router-link
           v-if="isLogin"
           :to="{ name: 'Register', query: { redirect: redirect } }"
-          >注册</router-link
+          >register</router-link
         >
         <router-link
           v-if="isRegister || isResetPwd"
           :to="{ name: 'Login', query: { redirect: redirect } }"
-          >登录</router-link
+          >login</router-link
         >
       </span>
 
@@ -229,8 +229,8 @@ export default {
       return this.isLogin ? "on" : "off";
     },
     buttonText() {
-      if (this.isLogin) return "登录";
-      else if (this.isRegister) return "注册";
+      if (this.isLogin) return "login";
+      else if (this.isRegister) return "register";
       else return "重置密码";
     },
     title() {
